@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(226, 226, 191);
+
+}
 ul{
     list-style: none;
     padding: 2 4 ;
@@ -24,4 +28,8 @@ div{
     margin-left: 2;
     background-color: rgb(179, 179, 84);
     border-radius: 10px;
+}
+form{
+display: flex;
+flex-direction: column;
 }

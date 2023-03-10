@@ -1,5 +1,5 @@
 
-const notes =[
+let notes =[
     {
     id: 1,
     title:"my first note",
@@ -12,25 +12,35 @@ const notes =[
     content:"Okay!, jotting things down",
     timestamp: Date()
   }
-  ]
+  ];
   
+
+
   function getNotes(){
     return notes
-  }
-  exports.getNotes();
+  };
+  exports.getNotes = getNotes;
 
   function getNote(id){
 return notes.find(note => note.id === id);
   //return note;
   }
-exports.getNote();
+module.exports.getNote = getNote;
 
 //ADD NOTE
   function addNote(note){
+    notes.push({
+      ...note,
+      id:notes.length+1,
+      timestamp:Date.now()
+    })
 
   }
+module.exports.addNote = addNote;
 
 //DELETE NOTES
   function deleteNote(id){
-
-  }
+notes = notes.filter((note)=>{ note.id === id});
+//console.log(notes)
+}
+  exports.deleteNote = deleteNote;

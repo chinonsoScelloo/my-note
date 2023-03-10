@@ -3,7 +3,7 @@ const nodemon = require('nodemon');
 const app = express();
 const database = require('./views/database')
 app.set("views engine","ejs");
-
+app.use(express.urlencoded({extended:true}));
 app.get('/', (req, res) => {
    // res.send(`<h1>${Date()}</h1>`);
    res.render("index.ejs",{
@@ -25,9 +25,27 @@ app.get('/notes/:id',(req,res)=>{
   }
   //res.send(note)
   res.render('singleNote.ejs',
-  {note,});
+  {note});
 })
 
+//CREATE NOTES
+app.get('/createnote',(req,res)=>{
+  res.render(
+    'createNote.ejs'
+  )
+})
+//POST REQ TO HANDLE POSTING THE NOTES TO DB
+app.post('/notes',(req,res)=>{
+const data = req.body;
+database.addNote(data);
+//res.send(data)
+res.redirect('/notes');
+})
+app.post('/notes/:id/delete',(req,res)=>{
+  const id = +req.params.body;
+  database.deleteNote(id);
+  res.redirect('/notes');
+})
 //app.use(express.static("public"))
 // app.get('/goodbye', (req,res)=>{
 //     res.send('GOODBYE')
