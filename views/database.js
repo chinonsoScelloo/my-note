@@ -17,8 +17,13 @@ let notes =[
 let currentNote = 3;
 
 
-  function getNotes(){
-    return notes
+  function getNotes(searchItem){
+    if(searchItem){
+   // console.log(searchItem);
+   return notes.filter(note=> note.title.includes(searchItem) || note.content.includes(searchItem));
+  }
+    return notes;
+  //return the searchitem note when searchitem is true
   };
   exports.getNotes = getNotes;
 

@@ -12,9 +12,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/notes',(req,res)=>{
-  const notes = database.getNotes();
+  const searchItem = req.query.searchItem;
+  
+  const notes = database.getNotes(searchItem);
   res.render('notes.ejs',{notes});
 })
+
+
 app.get('/notes/:id',(req,res)=>{
   const id = +req.params.id;
   //const note = notes.find(note => note.id === id);
