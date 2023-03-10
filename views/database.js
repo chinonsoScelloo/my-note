@@ -40,7 +40,8 @@ module.exports.addNote = addNote;
 
 //DELETE NOTES
   function deleteNote(id){
-notes = notes.filter((note)=>{ note.id === id});
+//notes = notes.filter((note)=>{ note.id === id});
+notes.slice(id);
 //console.log(notes)
 }
   exports.deleteNote = deleteNote;
