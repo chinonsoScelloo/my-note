@@ -42,7 +42,7 @@ database.addNote(data);
 res.redirect('/notes');
 })
 app.post('/notes/:id/delete',(req,res)=>{
-  const id = +req.params.body;
+  const id = +req.params.id;
   database.deleteNote(id);
   res.redirect('/notes');
 })

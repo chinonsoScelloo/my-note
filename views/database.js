@@ -14,6 +14,7 @@ let notes =[
   }
   ];
   
+let currentNote = 3;
 
 
   function getNotes(){
@@ -31,17 +32,21 @@ module.exports.getNote = getNote;
   function addNote(note){
     notes.push({
       ...note,
-      id:notes.length+1,
+      //id:notes.length+1,
+      id:currentNote,
       timestamp:Date.now()
     })
+    currentNote++;
 
   }
 module.exports.addNote = addNote;
 
 //DELETE NOTES
   function deleteNote(id){
-//notes = notes.filter((note)=>{ note.id === id});
-notes.slice(id);
+//notes = notes.filter((note)=>{ note.id !== id});
+notes = notes.filter((note) => note.id !== id);
+
+//notes.slice(id);
 //console.log(notes)
 }
   exports.deleteNote = deleteNote;

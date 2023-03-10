@@ -33,3 +33,29 @@ form{
 display: flex;
 flex-direction: column;
 }
+
+
+
+  .btn {
+    position: relative;
+    border: 3px solid  rgb(179, 179, 84);
+    border-radius: 1rem;
+    background-color: rgb(226, 226, 191);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
